@@ -21,4 +21,10 @@ public class MainActivity extends AppCompatActivity {
         Intent in = new Intent(MainActivity.this, RegisterActivity.class);
         startActivity(in);
     }
+
+    public void onLogin(View v){
+        Button btnLogin = (Button)v;
+        Intent in = new Intent(MainActivity.this,SwipeCardTestActivity.class);
+        startActivity(in);
+    }
 }

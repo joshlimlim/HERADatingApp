@@ -27,20 +27,20 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 @Layout(R.layout.swipe_card_view)
 public class SwipeCard {
     @View(R.id.profileImageView)
-    private ImageView profileImageView;
+    public ImageView profileImageView;
 
     @View(R.id.nameAgeTxt)
-    private TextView nameAgeTxt;
+    public TextView nameAgeTxt;
 
     @View(R.id.locationNameTxt)
-    private TextView locationNameTxt;
+    public TextView locationNameTxt;
 
     @SwipeView
-    private android.view.View cardView;
+    public android.view.View cardView;
 
-    private Profile mProfile;
-    private Context mContext;
-    private SwipePlaceHolderView mSwipeView;
+    public Profile mProfile;
+    public Context mContext;
+    public SwipePlaceHolderView mSwipeView;
 
     public SwipeCard(Context context, Profile profile, SwipePlaceHolderView swipeView) {
         mContext = context;

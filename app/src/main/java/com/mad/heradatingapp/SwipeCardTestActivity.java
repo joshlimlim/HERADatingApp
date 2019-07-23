@@ -25,22 +25,25 @@ public class SwipeCardTestActivity extends AppCompatActivity {
 
 
         int bottomMargin = Utils.dpToPx(160);
-        int windowWidth = Utils.getDeviceWidth(mContext);
-        int windowHeight = Utils.getDeviceHeight(mContext);
+        Point windowSize = Utils.getDisplaySize(getWindowManager());
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
                 .setIsUndoEnabled(true)
                 .setHeightSwipeDistFactor(10)
                 .setWidthSwipeDistFactor(5)
                 .setSwipeDecor(new SwipeDecor()
-                        .setViewWidth(windowWidth)
-                        .setViewHeight(windowHeight - bottomMargin)
+                        .setViewWidth(windowSize.x)
+                        .setViewHeight(windowSize.y - bottomMargin)
                         .setViewGravity(Gravity.TOP)
                         .setPaddingTop(20)
                         .setRelativeScale(0.01f)
                         .setSwipeMaxChangeAngle(2f)
                         .setSwipeInMsgLayoutId(R.layout.swipe_in_message)
                         .setSwipeOutMsgLayoutId(R.layout.swipe_out_message));
+
+        for(Profile profile : Utils.loadProfiles(this.getApplicationContext())){
+            mSwipeView.addView(new SwipeCard(mContext, profile, mSwipeView));
+        }
 
         findViewById(R.id.rejectBtn).setOnClickListener(new View.OnClickListener() {
             @Override

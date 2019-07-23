@@ -14,13 +14,13 @@
             android:id="@+id/rejectBtn"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/CancelRound"/>
+            android:background="@drawable/cancelround"/>
         <ImageButton
             android:id="@+id/acceptBtn"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
-            android:background="@drawable/HeartRound"/>
+            android:background="@drawable/heartround"/>
         <ImageButton
             android:id="@+id/undoBtn"
             android:layout_width="50dp"

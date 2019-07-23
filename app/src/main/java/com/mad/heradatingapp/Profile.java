@@ -6,6 +6,8 @@ public class Profile {
     private Integer age;
     private String location;
 
+    public Profile() {}
+
     public String getName() {
         return name;
     }

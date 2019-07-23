@@ -1,17 +1,66 @@
 package com.mad.heradatingapp;
 
+import android.content.Context;
+import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
+import com.mad.heradatingapp.Utils;
 
+import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 
 public class SwipeCardTestActivity extends AppCompatActivity {
     private SwipePlaceHolderView mSwipeView;
+    private Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_card_test);
 
-        mSwipeView =(SwipePlaceHolderView)findViewById(R.id.swipeView);
+        mSwipeView = (SwipePlaceHolderView) findViewById(R.id.swipeView);
+        mContext = getApplicationContext();
+
+
+        int bottomMargin = Utils.dpToPx(160);
+        int windowWidth = Utils.getDeviceWidth(mContext);
+        int windowHeight = Utils.getDeviceHeight(mContext);
+        mSwipeView.getBuilder()
+                .setDisplayViewCount(3)
+                .setIsUndoEnabled(true)
+                .setHeightSwipeDistFactor(10)
+                .setWidthSwipeDistFactor(5)
+                .setSwipeDecor(new SwipeDecor()
+                        .setViewWidth(windowWidth)
+                        .setViewHeight(windowHeight - bottomMargin)
+                        .setViewGravity(Gravity.TOP)
+                        .setPaddingTop(20)
+                        .setRelativeScale(0.01f)
+                        .setSwipeMaxChangeAngle(2f)
+                        .setSwipeInMsgLayoutId(R.layout.swipe_in_message)
+                        .setSwipeOutMsgLayoutId(R.layout.swipe_out_message));
+
+        findViewById(R.id.rejectBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSwipeView.doSwipe(false);
+            }
+        });
+
+        findViewById(R.id.acceptBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSwipeView.doSwipe(true);
+            }
+        });
+
+        findViewById(R.id.undoBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSwipeView.undoLastSwipe();
+            }
+        });
     }
 }

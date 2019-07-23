@@ -1,10 +1,12 @@
 package com.mad.heradatingapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -22,7 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
         reff = FirebaseDatabase.getInstance().getReference().child("Member");
         txtName = (EditText)findViewById(R.id.etUsername);
         txtAge = (EditText)findViewById(R.id.etAge);
-        btnSignup = (Button)findViewById(R.id.btnSignUp);
+        btnSignup = (Button)findViewById(R.id.btnSignup);
         member = new Profile();
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,5 +37,17 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this,"data inserted",Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    public void onLogin(View v){
+        Button btnSignup = (Button)v;
+        Intent in = new Intent(RegisterActivity.this, LoginActivity.class);
+        startActivity(in);
+    }
+
+    public  void onHome(View v) {
+        ImageButton imgbtnBack = (ImageButton) v;
+        Intent in = new Intent(RegisterActivity.this, MainActivity.class);
+        startActivity(in);
     }
 }

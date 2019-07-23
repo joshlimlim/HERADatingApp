@@ -19,7 +19,7 @@
         android:textColor="@android:color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
@@ -36,15 +36,16 @@
         android:textSize="46sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+        app:layout_constraintTop_toBottomOf="@+id/imgbtnBack" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/imgbtnBack"
         android:layout_width="30dp"
         android:layout_height="29dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/leftarrow"
+        android:onClick="onHome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -113,7 +114,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnForgetPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -121,19 +122,21 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@null"
+        android:onClick="onForgetPassword"
         android:text="Forgot Password?"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnLogin"
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnSignup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#66000000"
         android:fontFamily="@font/lato"
+        android:onClick="onSignup"
         android:text="Don't have an account? Sign up"
         android:textColor="@android:color/white"
         android:textSize="16sp"

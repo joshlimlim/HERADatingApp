@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLogin(View v){
-        Button btnLogin = (Button)v;
-        Intent in = new Intent(MainActivity.this,SwipeCardTestActivity.class);
+        Button btnAlreadyMember = (Button)v;
+        Intent in = new Intent(MainActivity.this,LoginActivity.class);
         startActivity(in);
     }
 }

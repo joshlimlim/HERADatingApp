@@ -7,6 +7,21 @@
     android:background="@drawable/blur"
     tools:context=".LoginActivity">
 
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="200dp"
+        android:fontFamily="@font/lato_light"
+        android:text="Login"
+        android:textColor="@android:color/white"
+        android:textSize="46sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+
     <ImageButton
         android:id="@+id/imageButton3"
         android:layout_width="30dp"
@@ -16,5 +31,16 @@
         android:background="@drawable/leftarrow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:text="EMAIL ADDRESS"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="68dp"
+        tools:layout_editor_absoluteY="240dp" />
 
 </android.support.constraint.ConstraintLayout>

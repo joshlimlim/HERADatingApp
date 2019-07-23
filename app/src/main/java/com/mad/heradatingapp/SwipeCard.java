@@ -49,7 +49,7 @@ public class SwipeCard {
     }
 
     @Resolve
-    private void onResolved(){
+    public void onResolved(){
         MultiTransformation multi = new MultiTransformation(
                 new BlurTransformation(mContext, 30),
                 new RoundedCornersTransformation(
@@ -64,7 +64,7 @@ public class SwipeCard {
     }
 
     @SwipeHead
-    private void onSwipeHeadCard() {
+    public void onSwipeHeadCard() {
         Glide.with(mContext).load(mProfile.getImageUrl())
                 .bitmapTransform(new RoundedCornersTransformation(
                         mContext, Utils.dpToPx(7), 0,
@@ -74,34 +74,34 @@ public class SwipeCard {
     }
 
     @Click(R.id.profileImageView)
-    private void onClick(){
+    public void onClick(){
         Log.d("EVENT", "profileImageView click");
 //        mSwipeView.addView(this);
     }
 
     @SwipeOut
-    private void onSwipedOut(){
+    public void onSwipedOut(){
         Log.d("EVENT", "onSwipedOut");
 //        mSwipeView.addView(this);
     }
 
     @SwipeCancelState
-    private void onSwipeCancelState(){
+    public void onSwipeCancelState(){
         Log.d("EVENT", "onSwipeCancelState");
     }
 
     @SwipeIn
-    private void onSwipeIn(){
+    public void onSwipeIn(){
         Log.d("EVENT", "onSwipedIn");
     }
 
     @SwipeInState
-    private void onSwipeInState(){
+    public void onSwipeInState(){
         Log.d("EVENT", "onSwipeInState");
     }
 
     @SwipeOutState
-    private void onSwipeOutState(){
+    public void onSwipeOutState(){
         Log.d("EVENT", "onSwipeOutState");
     }
 }

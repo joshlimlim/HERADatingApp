@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "87785800867-rbqkpn3vo8k2cloforr5a5jr9ad80di6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mad.heradatingapp",
+            "certificate_hash": "a7a1c859cfa5323f1234cfa97d45ab6a0c95d291"
+          }
+        },
+        {
           "client_id": "87785800867-c6eses2hi8qpl63clvvk0md0fg0d4qgu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

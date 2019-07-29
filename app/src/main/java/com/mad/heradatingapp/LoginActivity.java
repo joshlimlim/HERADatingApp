@@ -27,9 +27,15 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(in);
     }
 
-    public  void onHome(View v) {
+    public void onHome(View v) {
         ImageButton imgbtnBack = (ImageButton) v;
         Intent in = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(in);
+    }
+
+    public void onLogin(View v){
+        Button btnLogin = (Button)v;
+        Intent in = new Intent(LoginActivity.this, HomePageActivity.class);
         startActivity(in);
     }
 }

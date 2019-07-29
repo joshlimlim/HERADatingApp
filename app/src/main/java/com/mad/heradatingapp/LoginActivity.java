@@ -3,6 +3,7 @@ package com.mad.heradatingapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -30,6 +31,12 @@ public class LoginActivity extends AppCompatActivity {
     public  void onHome(View v) {
         ImageButton imgbtnBack = (ImageButton) v;
         Intent in = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(in);
+    }
+
+    public void onLogin(View v){
+        Button btnLogin = (Button)v;
+        Intent in = new Intent(LoginActivity.this,SwipeCardTestActivity.class);
         startActivity(in);
     }
 }

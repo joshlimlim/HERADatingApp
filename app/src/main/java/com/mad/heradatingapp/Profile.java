@@ -1,12 +1,23 @@
 package com.mad.heradatingapp;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Profile {
+    @SerializedName("name")
+    @Expose
     private String name;
+    @SerializedName("url")
+    @Expose
     private String imageUrl;
+    @SerializedName("age")
+    @Expose
+    private Integer age;
+    @SerializedName("location")
+    @Expose
+    private String location;
     private String email;
     private String password;
-    private Integer age;
-    private String location;
 
     public Profile() {}
 

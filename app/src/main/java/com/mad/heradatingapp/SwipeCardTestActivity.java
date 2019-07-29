@@ -70,7 +70,6 @@ public class SwipeCardTestActivity extends AppCompatActivity {
             }
         });
     }
-
     public void logOut(View v){
         mAuth.signOut();
         Intent in = new Intent(SwipeCardTestActivity.this,MainActivity.class);

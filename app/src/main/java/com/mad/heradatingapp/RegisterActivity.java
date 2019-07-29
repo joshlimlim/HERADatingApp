@@ -13,7 +13,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText txtName, txtAge;
+    EditText txtName, txtAge, txtEmail, txtPassword;
     Button btnSignup;
     DatabaseReference reff;
     Profile member;
@@ -24,6 +24,8 @@ public class RegisterActivity extends AppCompatActivity {
         reff = FirebaseDatabase.getInstance().getReference().child("Member");
         txtName = (EditText)findViewById(R.id.etUsername);
         txtAge = (EditText)findViewById(R.id.etAge);
+        txtEmail = (EditText)findViewById(R.id.etEmail);
+        txtPassword = (EditText)findViewById(R.id.etPassword);
         btnSignup = (Button)findViewById(R.id.btnSignup);
         member = new Profile();
         btnSignup.setOnClickListener(new View.OnClickListener() {
@@ -32,6 +34,8 @@ public class RegisterActivity extends AppCompatActivity {
                 int age = Integer.parseInt(txtAge.getText().toString().trim());
                 member.setName(txtName.getText().toString().trim());
                 member.setAge(age);
+                member.setEmail(txtEmail.getText().toString());
+                member.setPassword(txtPassword.getText().toString());
 
                 reff.push().setValue(member);
                 Toast.makeText(RegisterActivity.this,"data inserted",Toast.LENGTH_LONG).show();

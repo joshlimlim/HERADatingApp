@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLogin(View v){
-        Button btnAlreadyMember = (Button)v;
+        Button btnLogin = (Button)v;
         Intent in = new Intent(MainActivity.this,LoginActivity.class);
         startActivity(in);
     }

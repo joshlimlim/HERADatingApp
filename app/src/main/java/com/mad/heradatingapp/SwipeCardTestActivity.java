@@ -1,11 +1,14 @@
 package com.mad.heradatingapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+
+import com.google.firebase.auth.FirebaseAuth;
 import com.mad.heradatingapp.Utils;
 
 import com.mindorks.placeholderview.SwipeDecor;
@@ -14,6 +17,7 @@ import com.mindorks.placeholderview.SwipePlaceHolderView;
 public class SwipeCardTestActivity extends AppCompatActivity {
     private SwipePlaceHolderView mSwipeView;
     private Context mContext;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,5 +69,10 @@ public class SwipeCardTestActivity extends AppCompatActivity {
                 mSwipeView.undoLastSwipe();
             }
         });
+    }
+
+    public void logOut(View v){
+        mAuth.signOut();
+        Intent in = new Intent(SwipeCardTestActivity.this,MainActivity.class);
     }
 }

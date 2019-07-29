@@ -18,10 +18,13 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RegisterActivity extends AppCompatActivity {
     EditText txtName, txtAge, txtEmail, txtPassword;
     Button btnSignup;
-    DatabaseReference reff;
+    //DatabaseReference reff;
     Profile member;
 
     private FirebaseAuth mAuth;
@@ -41,10 +44,12 @@ public class RegisterActivity extends AppCompatActivity {
                 if (user != null){
                     Intent in = new Intent(RegisterActivity.this, SwipeCardTestActivity.class);
                     startActivity(in);
+                    finish();
+                    return;
                 }
             }
         };
-        reff = FirebaseDatabase.getInstance().getReference().child("Member");
+        //reff = FirebaseDatabase.getInstance().getReference().child("Member");
         txtName = (EditText)findViewById(R.id.etUsername);
         txtAge = (EditText)findViewById(R.id.etAge);
         txtEmail = (EditText)findViewById(R.id.etEmail);
@@ -69,19 +74,24 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
 
-                reff.push().setValue(member);
-                Toast.makeText(RegisterActivity.this,"data inserted",Toast.LENGTH_LONG).show();
+                //reff.push().setValue(member);
+                //Toast.makeText(RegisterActivity.this,"data inserted",Toast.LENGTH_LONG).show();
             }
         });
     }
-
-    public void onLogin(View v){
-        Button btnSignup = (Button)v;
-        Intent in = new Intent(RegisterActivity.this, LoginActivity.class);
-        startActivity(in);
+    @Override
+    protected void onStart(){
+        super.onStart();
+        mAuth.addAuthStateListener(firebaseAuthStateListener);
     }
 
-    public  void onHome(View v) {
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mAuth.removeAuthStateListener(firebaseAuthStateListener);
+    }
+
+    public void onHome(View v) {
         ImageButton imgbtnBack = (ImageButton) v;
         Intent in = new Intent(RegisterActivity.this, MainActivity.class);
         startActivity(in);

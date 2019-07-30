@@ -26,7 +26,6 @@ import java.util.Map;
 public class RegisterActivity extends AppCompatActivity {
     EditText txtName, txtAge, txtEmail, txtPassword;
     Button btnSignup;
-    DatabaseReference reff;
     Profile member;
     RadioGroup mradioGroup;
 
@@ -45,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null){
-                    Intent in = new Intent(RegisterActivity.this, SwipeCardTestActivity.class);
+                    Intent in = new Intent(RegisterActivity.this, NavigationActivity.class);
                     startActivity(in);
                     finish();
                     return;
@@ -84,8 +83,16 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(RegisterActivity.this,"sign up error",Toast.LENGTH_LONG).show();
                         }else{
                             String userId = mAuth.getCurrentUser().getUid();
-                            reff = FirebaseDatabase.getInstance().getReference().child("Member").child(radioButton.getText().toString()).child(userId);
-                            reff.push().setValue(member);
+                            DatabaseReference currentUserName = FirebaseDatabase.getInstance().getReference().child("Member").child(radioButton.getText().toString()).child(userId).child("name");
+                            currentUserName.setValue(member.getName());
+                            DatabaseReference currentUserEmail = FirebaseDatabase.getInstance().getReference().child("Member").child(radioButton.getText().toString()).child(userId).child("email");
+                            currentUserEmail.setValue(member.getEmail());
+                            DatabaseReference currentUserAge = FirebaseDatabase.getInstance().getReference().child("Member").child(radioButton.getText().toString()).child(userId).child("age");
+                            currentUserAge.setValue(member.getAge());
+                            DatabaseReference currentUserGender = FirebaseDatabase.getInstance().getReference().child("Member").child(radioButton.getText().toString()).child(userId).child("gender");
+                            currentUserGender.setValue(member.getGender());
+                            DatabaseReference currentUserPassword = FirebaseDatabase.getInstance().getReference().child("Member").child(radioButton.getText().toString()).child(userId).child("password");
+                            currentUserPassword.setValue(member.getPassword());
                         }
                     }
                 });

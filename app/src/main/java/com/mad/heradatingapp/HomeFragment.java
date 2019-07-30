@@ -34,6 +34,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<String> al;
     private ArrayAdapter<String> arrayAdapter;
     private int i;
+    private FirebaseAuth mAuth;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -46,8 +47,10 @@ public class HomeFragment extends Fragment {
         mSwipeView = (SwipePlaceHolderView) rootView.findViewById(R.id.swipeView);
 
         Point windowSize = Utils.getDisplaySize(getActivity().getWindowManager());
-        int width = Utils.dpToPx(280);
-        int height = (int)(windowSize.y / 1.5);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        checkUserSex();
 
         int bottomMargin = Utils.dpToPx(160);
         mSwipeView.getBuilder()
@@ -63,6 +66,7 @@ public class HomeFragment extends Fragment {
                         .setSwipeMaxChangeAngle(2f)
                         .setSwipeInMsgLayoutId(R.layout.swipe_in_message)
                         .setSwipeOutMsgLayoutId(R.layout.swipe_out_message));
+
 
         rootView.findViewById(R.id.rejectBtn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,8 +129,8 @@ public class HomeFragment extends Fragment {
         });
 
 
-        final DatabaseReference femaleDb = FirebaseDatabase.getInstance().getReference().child("Member").child("Female");
-        maleDatabase.addChildEventListener(new ChildEventListener() {
+        final DatabaseReference femaleDatabase = FirebaseDatabase.getInstance().getReference().child("Member").child("Female");
+        femaleDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 if(dataSnapshot.getKey().equals(user.getUid())){
@@ -164,13 +168,18 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 if (dataSnapshot.exists()) {
-                    Profile newProfile = new Profile();
-                    int newAge= Integer.parseInt(dataSnapshot.child("age").toString());
-                    newProfile.setAge(newAge);
-                    String newName= dataSnapshot.child("name").toString();
-                    newProfile.setName(newName);
-                    newProfile.setImageUrl("https://m.media-amazon.com/images/M/MV5BMTc0MDMyMzI2OF5BMl5BanBnXkFtZTcwMzM2OTk1MQ@@._V1_UX214_CR0,0,214,317_AL_.jpg");
-                    mSwipeView.addView(new SwipeCard(getContext(), newProfile, mSwipeView));
+                    //Profile newProfile = new Profile();
+                    //int newAge= Integer.parseInt(dataSnapshot.child("age").toString());
+                    //newProfile.setAge(newAge);
+                    //String newName= dataSnapshot.child("name").toString();
+                    //newProfile.setName(newName);
+                    //newProfile.setImageUrl("https://m.media-amazon.com/images/M/MV5BMTc0MDMyMzI2OF5BMl5BanBnXkFtZTcwMzM2OTk1MQ@@._V1_UX214_CR0,0,214,317_AL_.jpg");
+                    //newProfile.setLocation("Yes");
+                    //mSwipeView.addView(new SwipeCard(getContext(),newProfile , mSwipeView));
+
+                    for(Profile profile : Utils.loadProfiles(getContext())){
+                        mSwipeView.addView(new SwipeCard(getContext(), profile, mSwipeView));
+                    }
                 }
             }
 

@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onSignup(View v){
         Button btnSignup = (Button)v;
-        Intent in = new Intent(MainActivity.this, NavigationActivity.class);
+        Intent in = new Intent(MainActivity.this, RegisterActivity.class);
         startActivity(in);
     }
 

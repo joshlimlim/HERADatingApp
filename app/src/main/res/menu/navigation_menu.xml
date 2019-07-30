@@ -28,4 +28,10 @@
         android:icon="@drawable/settings"
         android:title="Settings">
     </item>
+
+    <item
+        android:id="@+id/signOut"
+        android:icon="@drawable/blur"
+        android:title="Sign Out">
+    </item>
 </menu>

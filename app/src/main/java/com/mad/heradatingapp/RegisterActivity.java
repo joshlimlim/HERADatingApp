@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,8 +26,9 @@ import java.util.Map;
 public class RegisterActivity extends AppCompatActivity {
     EditText txtName, txtAge, txtEmail, txtPassword;
     Button btnSignup;
-    //DatabaseReference reff;
+    DatabaseReference reff;
     Profile member;
+    RadioGroup mradioGroup;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
@@ -55,6 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
         txtEmail = (EditText)findViewById(R.id.etEmail);
         txtPassword = (EditText)findViewById(R.id.etPassword);
         btnSignup = (Button)findViewById(R.id.btnSignup);
+        mradioGroup = (RadioGroup)findViewById(R.id.radioGroup);
         member = new Profile();
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,12 +68,24 @@ public class RegisterActivity extends AppCompatActivity {
                 member.setAge(age);
                 member.setEmail(txtEmail.getText().toString());
                 member.setPassword(txtPassword.getText().toString());
+                int selectedId = mradioGroup.getCheckedRadioButtonId();
+                final RadioButton radioButton = (RadioButton) findViewById(selectedId);
+                if (radioButton.getText() == null){
+                    Toast.makeText(RegisterActivity.this,"Choose a gender!",Toast.LENGTH_LONG).show();
+                    return;
+                }else{
+                    member.setGender(radioButton.getText().toString());
+                }
 
                 mAuth.createUserWithEmailAndPassword(member.getEmail(), member.getPassword()).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()){
                             Toast.makeText(RegisterActivity.this,"sign up error",Toast.LENGTH_LONG).show();
+                        }else{
+                            String userId = mAuth.getCurrentUser().getUid();
+                            reff = FirebaseDatabase.getInstance().getReference().child("Member").child(radioButton.getText().toString()).child(userId).child("name");
+                            reff.setValue(member.getName());
                         }
                     }
                 });

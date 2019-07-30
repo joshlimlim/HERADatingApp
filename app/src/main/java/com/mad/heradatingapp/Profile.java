@@ -18,6 +18,7 @@ public class Profile {
     private String location;
     private String email;
     private String password;
+    private String gender;
 
     public Profile() {}
 
@@ -57,5 +58,13 @@ public class Profile {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

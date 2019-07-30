@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null){
-                    Intent in = new Intent(LoginActivity.this, SwipeCardTestActivity.class);
+                    Intent in = new Intent(LoginActivity.this, NavigationActivity.class);
                     startActivity(in);
                     finish();
                     return;

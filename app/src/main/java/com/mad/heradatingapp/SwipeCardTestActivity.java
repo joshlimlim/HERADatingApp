@@ -22,7 +22,7 @@ import com.mad.heradatingapp.Utils;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 
-public class SwipeCardTestActivity extends AppCompatActivity {
+public class SwipeCardTestActivity extends NavigationActivity {
     private SwipePlaceHolderView mSwipeView;
     private Context mContext;
     private FirebaseAuth mAuth;
@@ -31,6 +31,8 @@ public class SwipeCardTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_card_test);
+
+        checkUserSex();
 
         mSwipeView = (SwipePlaceHolderView) findViewById(R.id.swipeView);
         mContext = getApplicationContext();
@@ -80,6 +82,7 @@ public class SwipeCardTestActivity extends AppCompatActivity {
     }
 
     private String userSex;
+    private String oppUsersex;
     public void checkUserSex(){
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final DatabaseReference maleDatabase = FirebaseDatabase.getInstance().getReference().child("Member").child("Male");
@@ -88,6 +91,39 @@ public class SwipeCardTestActivity extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 if(dataSnapshot.getKey().equals(user.getUid())){
                     userSex = "Male";
+                    oppUsersex="Female";
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        final DatabaseReference femaleDb = FirebaseDatabase.getInstance().getReference().child("Member").child("Female");
+        maleDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                if(dataSnapshot.getKey().equals(user.getUid())){
+                    userSex = "Female";
+                    oppUsersex="Male";
                 }
             }
 
@@ -112,4 +148,6 @@ public class SwipeCardTestActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

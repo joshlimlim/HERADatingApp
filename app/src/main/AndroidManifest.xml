@@ -24,9 +24,6 @@
             android:name=".SwipeCardTestActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HomePageActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".RegisterActivity"
             android:screenOrientation="portrait" />
         <activity

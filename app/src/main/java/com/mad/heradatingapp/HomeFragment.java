@@ -64,11 +64,6 @@ public class HomeFragment extends Fragment {
                         .setSwipeInMsgLayoutId(R.layout.swipe_in_message)
                         .setSwipeOutMsgLayoutId(R.layout.swipe_out_message));
 
-
-        for (Profile profile : Utils.loadProfiles(getContext())) {
-            mSwipeView.addView(new SwipeCard(getContext(), profile, mSwipeView));
-        }
-
         rootView.findViewById(R.id.rejectBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,10 +164,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 if (dataSnapshot.exists()) {
-                    Profile profile = new Profile();
-                    //profile.setAge(dataSnapshot.child());
-                    mSwipeView.addView(new SwipeCard(getContext(), profile, mSwipeView));
-                    //mSwipeView.addView();
+                    Profile newProfile = new Profile();
+                    int newAge= Integer.parseInt(dataSnapshot.child("age").toString());
+                    newProfile.setAge(newAge);
+                    String newName= dataSnapshot.child("name").toString();
+                    newProfile.setName(newName);
+                    newProfile.setImageUrl("https://m.media-amazon.com/images/M/MV5BMTc0MDMyMzI2OF5BMl5BanBnXkFtZTcwMzM2OTk1MQ@@._V1_UX214_CR0,0,214,317_AL_.jpg");
+                    mSwipeView.addView(new SwipeCard(getContext(), newProfile, mSwipeView));
                 }
             }
 

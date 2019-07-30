@@ -5,7 +5,7 @@
     android:id="@+id/dl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_green_dark"
+    android:background="@null"
     tools:context=".NavigationActivity">
 
     <android.support.v7.widget.Toolbar
@@ -18,18 +18,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Main"
-            android:textSize="50dp"
-            android:id="@+id/textView"
-            android:layout_marginTop="200dp"
-            android:layout_marginLeft="130dp"/>
-
-
     </RelativeLayout>
 
     <android.support.design.widget.NavigationView

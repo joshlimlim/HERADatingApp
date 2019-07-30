@@ -84,8 +84,8 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(RegisterActivity.this,"sign up error",Toast.LENGTH_LONG).show();
                         }else{
                             String userId = mAuth.getCurrentUser().getUid();
-                            reff = FirebaseDatabase.getInstance().getReference().child("Member").child(radioButton.getText().toString()).child(userId).child("name");
-                            reff.setValue(member.getName());
+                            reff = FirebaseDatabase.getInstance().getReference().child("Member").child(radioButton.getText().toString()).child(userId);
+                            reff.push().setValue(member);
                         }
                     }
                 });

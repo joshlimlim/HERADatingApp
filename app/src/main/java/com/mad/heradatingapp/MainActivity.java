@@ -1,6 +1,7 @@
 package com.mad.heradatingapp;
 
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onSignup(View v){
         Button btnSignup = (Button)v;
-        Intent in = new Intent(MainActivity.this, RegisterActivity.class);
+        Intent in = new Intent(MainActivity.this, NavigationActivity.class);
         startActivity(in);
     }
 

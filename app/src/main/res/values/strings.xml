@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HERA Dating App</string>
+    <string name="Open">HERA Dating App</string>
+    <string name="Close">HERA Dating App</string>
 </resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title="Home">
+    </item>
+    <item
+        android:id="@+id/chat"
+        android:icon="@drawable/messages"
+        android:title="Messages">
+    </item>
+
+    <item
+        android:id="@+id/matches"
+        android:icon="@drawable/greyheart"
+        android:title="My matches">
+    </item>
+
+    <item
+        android:id="@+id/things_to_do"
+        android:icon="@drawable/greystar"
+        android:title="Things to do">
+    </item>
+
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/settings"
+        android:title="Settings">
+    </item>
+</menu>

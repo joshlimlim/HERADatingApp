@@ -76,13 +76,13 @@ public class SwipeCard {
     @Click(R.id.profileImageView)
     public void onClick(){
         Log.d("EVENT", "profileImageView click");
-//        mSwipeView.addView(this);
+        mSwipeView.addView(this);
     }
 
     @SwipeOut
     public void onSwipedOut(){
         Log.d("EVENT", "onSwipedOut");
-//        mSwipeView.addView(this);
+        mSwipeView.addView(this);
     }
 
     @SwipeCancelState
